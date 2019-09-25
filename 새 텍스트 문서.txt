@@ -1,0 +1,32 @@
+tensorflow 1.14.0
+keras 2.3.0일때
+#self.keras_model.metrics_tensors = []를 넣으면 a가 나온다
+
+keras 2.2.4로 낮춘뒤
+#self.keras_model.metrics_tensors = []다시 제거
+컴퓨터 렉이 걸린다.
+
+keras 2.0.8 로 낮춘뒤 실행
+__init__() missing 2 required positional arguments: 'inputs' and 'outputs' 라는 오류가 떠서
+https://github.com/tensorflow/models/issues/3491에서 tf 버전을 바꿔주면 된다고 한다 (1.5~1.7을 원한다)
+
+pip install tensorflow==1.7을 한뒤 다시 실행시켰을때 똑같은 결과를 얻음
+tensorflow-gpu==1.7로 바꿔본다
+똑같다 gpu를 안쓰나보다
+1.7x 1.6x 1.5x
+b같은 오류가 뜬다
+
+r1.5를 다운하라는 말을 들었고 이것은 tensorflow의 폴더에 들어가서 git check r1.5를 하면 된다
+똑같은 문제 발생
+
+다시 kerasa만 2.3.0으로 복귀 tf_utils가 없다고 뜸 --> keras 최신버전
+
+pip install tensorflow --upgrade로 최신버전 업데이트 1.14.0으로 돌아옴
+
+---원상복귀---
+
+
+'ParallelModel' object has no attribute 'metrics_tensors' 문제 발생
+
+문제를 바꿨다
+그랬더니 Training network heads도 안뜨고 끝나버린다
